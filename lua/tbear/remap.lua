@@ -9,7 +9,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- this remap will make the cursor stay in the same place
 vim.keymap.set("n", "J", "mzJ`z")
 
--- make cursor stay in the same RELATICE space when moving half pages up/down
+-- make cursor stay in the same RELATIVE space when moving half pages up/down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- search terms stay in the middle of the screen

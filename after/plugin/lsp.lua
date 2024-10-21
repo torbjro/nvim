@@ -79,3 +79,8 @@ require'lspconfig'.rust_analyzer.setup{
 }
 require'lspconfig'.starlark_rust.setup{}
 require'lspconfig'.golangci_lint_ls.setup{}
+require'lspconfig'.clangd.setup{
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  on_attach = lsp_attach,  -- Attach your keymaps and additional settings here
+}
+
