@@ -6,7 +6,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim'}
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  use { 'antonk52/lake.nvim' }
   use {
 	'nvim-telescope/telescope.nvim', tag = '0.1.8',
 	-- or                            , branch = '0.1.x',

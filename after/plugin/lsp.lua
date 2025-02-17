@@ -66,8 +66,17 @@ require'lspconfig'.lua_ls.setup {
     Lua = {}
   }
 }
-require'lspconfig'.pylyzer.setup{}
-require'lspconfig'.pyright.setup{}
+require'lspconfig'.pylsp.setup{
+    settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "E501", "E302", "E226" }, -- Ignore specific warnings
+        },
+      },
+    },
+  },
+}
 require'lspconfig'.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
