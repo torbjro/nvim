@@ -6,14 +6,12 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      -- You need Neovim v0.10 to use vim.snippet
       vim.snippet.expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({}),
 })
 
--- nvim-autopairs setup
 require('nvim-autopairs').setup{}
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

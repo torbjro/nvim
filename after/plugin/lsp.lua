@@ -1,7 +1,5 @@
 local lsp_zero = require('lsp-zero')
 
--- lsp_attach is where you enable features that only work
--- if there is a language server active in the file
 local lsp_attach = function(client, bufnr)
   local opts = {buffer = bufnr}
 
@@ -23,16 +21,15 @@ lsp_zero.extend_lspconfig({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
--- think the rest of the file is unnecessary
 require'lspconfig'.cmake.setup{}
---Enable (broadcasting) snippet capability for completion
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.html.setup {
   capabilities = capabilities,
 }
-require'lspconfig'.java_language_server.setup{}
+
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
     if client.workspace_folders then
@@ -41,24 +38,15 @@ require'lspconfig'.lua_ls.setup {
         return
       end
     end
-
     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
       runtime = {
-        -- Tell the language server which version of Lua you're using
-        -- (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT'
       },
-      -- Make the server aware of Neovim runtime files
       workspace = {
         checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME
-          -- Depending on the usage, you might want to add additional paths here.
-          -- "${3rd}/luv/library"
-          -- "${3rd}/busted/library",
         }
-        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-        -- library = vim.api.nvim_get_runtime_file("", true)
       }
     })
   end,
@@ -66,6 +54,7 @@ require'lspconfig'.lua_ls.setup {
     Lua = {}
   }
 }
+
 require'lspconfig'.pylsp.setup{
     settings = {
     pylsp = {
@@ -77,6 +66,7 @@ require'lspconfig'.pylsp.setup{
     },
   },
 }
+
 require'lspconfig'.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
@@ -86,10 +76,18 @@ require'lspconfig'.rust_analyzer.setup{
     }
   }
 }
+
 require'lspconfig'.starlark_rust.setup{}
+
 require'lspconfig'.golangci_lint_ls.setup{}
+
 require'lspconfig'.clangd.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = lsp_attach,  -- Attach your keymaps and additional settings here
 }
 
+require'lspconfig'.julials.setup{}
+
+require'lspconfig'.ts_ls.setup{}
+
+require'lspconfig'.jdtls.setup{}

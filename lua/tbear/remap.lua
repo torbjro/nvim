@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
-vim.keymap.set("n","<leader>pv",vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set("i", "<C-å>", "<ESC>", { desc = "remap 'ESC' to å" })
 
 -- remap cursor movements in normal mode
 vim.keymap.set("n", "j", "h", { desc = "remap 'h' to move down" })
@@ -35,7 +37,6 @@ vim.keymap.set("v", "L", ":m '<-2<CR>gv=gv")
 -- J adds line below to current line with a space between
 -- this remap will make the cursor stay in the same place
 vim.keymap.set("n", "J", "mzJ`z")
-
 -- make cursor stay in the same RELATIVE space when moving half pages up/down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -59,7 +60,7 @@ vim.keymap.set({ "n", "i" }, "<C-s>", "<Cmd>w<CR>", { noremap = true, silent = t
 
 -- open new project with tmux
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", function ()
+vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
 
@@ -79,8 +80,12 @@ vim.g.tmux_navigator_no_mappings = 1
 
 vim.g.tmux_navigator_no_mappings = 1
 
-vim.keymap.set('n', '<C-j>', ':TmuxNavigateLeft<CR>', { silent = true , noremap = true})
-vim.keymap.set('n', '<C-k>', ':TmuxNavigateDown<CR>', { silent = true , noremap = true})
-vim.keymap.set('n', '<C-l>', ':TmuxNavigateUp<CR>', { silent = true , noremap = true})
-vim.keymap.set('n', '<C-ø>', ':TmuxNavigateRight<CR>', { silent = true , noremap = true})
-vim.keymap.set('n', '<C-\\>', ':TmuxNavigatePrevious<CR>', { silent = true , noremap = true})
+-- vim.keymap.set('n', '<C-j>', ':TmuxNavigateLeft<CR>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-k>', ':TmuxNavigateDown<CR>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-l>', ':TmuxNavigateUp<CR>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-ø>', ':TmuxNavigateRight<CR>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-\\>', ':TmuxNavigatePrevious<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', '<C-j>', '<C-w>h', { desc = 'Move to left pane' })
+vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move to down pane' })
+vim.keymap.set('n', '<C-l>', '<C-w>k', { desc = 'Move to up pane' })
+vim.keymap.set('n', '<C-ø>', '<C-w>l', { desc = 'Move to right pane' })
