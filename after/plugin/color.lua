@@ -5,6 +5,6 @@
 --     },
 -- })
 
--- vim.cmd.colorscheme("melange")
+-- vim.cmd.colorscheme("kanagawa-dragon")
 
-vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd.colorscheme("vague")
