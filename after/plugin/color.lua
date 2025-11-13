@@ -11,6 +11,10 @@ require("rose-pine").setup({
         Comment = { fg = grey },
         ["@variable.member"] = { fg = rose_pine_moon_variabel_member_custom },
         ["@function.method.call"] = { fg = rose_pine_moon_rose },
+        ["@property"] = { fg = rose_pine_moon_variabel_member_custom },
+        -- TODO: double check if attributes are needed
+        ["@attribute"] = { fg = rose_pine_moon_variabel_member_custom },
+        ["@attribute.builtin"] = { fg = rose_pine_moon_variabel_member_custom },
   },
 })
 
