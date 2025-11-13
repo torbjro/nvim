@@ -1,4 +1,5 @@
--- Keep lsp-zero if you want its conveniences (signs, defaults, etc.)
+vim.g.lspconfig = { use_nvim_api = true }
+
 local lsp_zero = require('lsp-zero')
 
 local lsp_attach = function(client, bufnr)
@@ -12,34 +13,48 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
-  vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format { async = true } end, opts)
+  vim.keymap.set({'n', 'x'}, '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
 end
 
--- Extend lsp-zero with your attach and capabilities
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lsp_zero.extend_lspconfig({
   sign_text = true,
   lsp_attach = lsp_attach,
-  capabilities = capabilities,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
--- Example servers using new API
-vim.lsp.config("cmake", {})
+-- Helper for defining/enabling servers
+local function lsp_setup(server, opts)
+  vim.lsp.config(server, opts or {})
+  vim.lsp.enable(server)
+end
 
--- HTML with snippet support
-local html_capabilities = vim.lsp.protocol.make_client_capabilities()
-html_capabilities.textDocument.completion.completionItem.snippetSupport = true
-vim.lsp.config("html", {
-  capabilities = html_capabilities,
+-- Capabilities
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- Show diagnostics inline
+vim.diagnostic.config({
+  virtual_text = {
+    -- prefix = "■", -- "●" or "■", "▎", "x", "E", "W"
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
 
--- Lua LS with special on_init
-vim.lsp.config("lua_ls", {
+-- Servers
+lsp_setup('cmake', {})
+
+lsp_setup('html', { capabilities = capabilities })
+
+lsp_setup('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
-      if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+      if vim.uv.fs_stat(path..'/.luarc.json') or vim.uv.fs_stat(path..'/.luarc.jsonc') then
         return
       end
     end
@@ -51,13 +66,10 @@ vim.lsp.config("lua_ls", {
       },
     })
   end,
-  settings = {
-    Lua = {},
-  },
+  settings = { Lua = {} },
 })
 
--- Python (pylsp) with plugin settings
-vim.lsp.config("pylsp", {
+lsp_setup('pylsp', {
   settings = {
     pylsp = {
       plugins = {
@@ -69,8 +81,7 @@ vim.lsp.config("pylsp", {
   },
 })
 
--- Rust
-vim.lsp.config("rust_analyzer", {
+lsp_setup('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
       diagnostics = { enable = false },
@@ -78,14 +89,22 @@ vim.lsp.config("rust_analyzer", {
   },
 })
 
--- Other servers
-vim.lsp.config("starlark_rust", {})
-vim.lsp.config("golangci_lint_ls", {})
-vim.lsp.config("clangd", {
+lsp_setup('starlark_rust', {})
+lsp_setup('golangci_lint_ls', {})
+
+lsp_setup('clangd', {
   capabilities = capabilities,
   on_attach = lsp_attach,
+  cmd = {
+    '/opt/homebrew/opt/llvm/bin/clangd',
+    '--background-index',
+    '--header-insertion=never',
+    '--clang-tidy',
+    '--compile-commands-dir=.',
+  },
 })
-vim.lsp.config("julials", {})
-vim.lsp.config("ts_ls", {})
-vim.lsp.config("jdtls", {})
+
+lsp_setup('julials', {})
+lsp_setup('ts_ls', {})
+lsp_setup('jdtls', {})
 

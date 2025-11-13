@@ -6,22 +6,25 @@
 return require("packer").startup(function(use)
   use { "wbthomason/packer.nvim" }
   use { "ramojus/mellifluous.nvim" }
-  use { 'deparr/tairiki.nvim' }
-  use { 'AlexvZyl/nordic.nvim' }
+  use { "wtfox/jellybeans.nvim" }
   use { "savq/melange-nvim" }
   use { "vague2k/vague.nvim" }
   use { "rebelot/kanagawa.nvim" }
   use { "catppuccin/nvim", as = "catppuccin" }
-  use { "ellisonleao/gruvbox.nvim" }
+  use { "sainnhe/gruvbox-material" }
+  use { "morhetz/gruvbox" }
+  use { "olimorris/onedarkpro.nvim" }
+  use { "blazkowolf/gruber-darker.nvim" }
+  use { "rose-pine/neovim", name = "rose-pine" }
   use { "nvim-telescope/telescope.nvim", tag = "0.1.8", requires = { {"nvim-lua/plenary.nvim"} } }
   use { "theprimeagen/harpoon" }
   use { "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"} }
   use { "nvim-treesitter/playground" }
   use { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" }
   use { "neovim/nvim-lspconfig" }
-  use {"hrsh7th/nvim-cmp"}
-  use {"hrsh7th/cmp-nvim-lsp"}
-  use { "williamboman/mason.nvim"}
+  use { "hrsh7th/nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lsp" }
+  use { "williamboman/mason.nvim" }
   use { "windwp/nvim-autopairs" }
   use { "christoomey/vim-tmux-navigator" }
   use { "kdheepak/lazygit.nvim" }

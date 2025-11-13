@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["bamboo.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/bamboo.nvim",
+    url = "https://github.com/ribru17/bamboo.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -84,10 +89,15 @@ _G.packer_plugins = {
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["gruvbox.nvim"] = {
+  falcon = {
     loaded = true,
-    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/falcon",
+    url = "https://github.com/fenetikm/falcon"
+  },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   harpoon = {
     loaded = true,
@@ -98,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["jellybeans.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/jellybeans.nvim",
+    url = "https://github.com/wtfox/jellybeans.nvim"
   },
   ["kanagawa.nvim"] = {
     loaded = true,
@@ -124,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
   ["melange-nvim"] = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/melange-nvim",
@@ -133,6 +153,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
     url = "https://github.com/ramojus/mellifluous.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
+  ["nordic.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/nordic.nvim",
+    url = "https://github.com/AlexvZyl/nordic.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -153,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["obscure.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/obscure.nvim",
+    url = "https://github.com/killitar/obscure.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -183,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/torbjornrolstad/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vague.nvim"] = {
     loaded = true,
