@@ -7,9 +7,11 @@ return require("packer").startup(function(use)
   use { "wbthomason/packer.nvim" }
   use { "rose-pine/neovim", name = "rose-pine" }
   use { "savq/melange-nvim" }
-  use { "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim" }
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "morhetz/gruvbox" }
+  use { "folke/tokyonight.nvim" }
+  use { "marko-cerovac/material.nvim" }
+  use { "AlexvZyl/nordic.nvim" }
   use { "nvim-telescope/telescope.nvim", tag = "0.1.8", requires = {"nvim-lua/plenary.nvim"} }
   use { "theprimeagen/harpoon" }
   use { "nvim-treesitter/nvim-treesitter" }

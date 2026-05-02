@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- make "-" work in normal mode
+vim.keymap.set('n', '-', vim.cmd.Ex, { desc = "open netrw"} )
 
 vim.keymap.set("i", "<C-å>", "<ESC>", { desc = "remap 'ESC' to å" })
 
@@ -55,6 +57,11 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 -- nop for ctrl Q
 vim.keymap.set("n", "Q", "<nop>")
 
+-- toggle lsp_signature floating window
+vim.keymap.set({ "n", "i" }, "<leader>ts", function()
+    require('lsp_signature').toggle_float_win()
+end, { silent = true, noremap = true, desc = "toggle signature hint" })
+
 -- save with ctrl-s
 vim.keymap.set({ "n", "i" }, "<C-s>", "<Cmd>w<CR>", { noremap = true, silent = true })
 
@@ -66,6 +73,8 @@ end)
 
 -- replace the word currently on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- replace the word currently on, but only forward
+vim.keymap.set("n", "<leader>S", [[:.,$s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -89,3 +98,4 @@ vim.keymap.set('n', '<C-j>', '<C-w>h', { desc = 'Move to left pane' })
 vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move to down pane' })
 vim.keymap.set('n', '<C-l>', '<C-w>k', { desc = 'Move to up pane' })
 vim.keymap.set('n', '<C-ø>', '<C-w>l', { desc = 'Move to right pane' })
+
